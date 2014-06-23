@@ -5,9 +5,11 @@ public class MoveSample : MonoBehaviour
 {	
 	public float time;
 	private GameObject target;
+
+	private float defaultTime;
 	void Awake()
 	{
-
+		defaultTime = time;
 	}
 	void Start(){
 
@@ -16,8 +18,15 @@ public class MoveSample : MonoBehaviour
 		//iTween.MoveBy(gameObject, iTween.Hash("x", 2, "easeType", "easeInOutExpo", "loopType", "pingPong", "delay", 0,"time", 0.5));
 	}
 
+	void OnDisable()
+	{
+		//iTween.Stop();
+		//Debug.Log("STOP I TWEEN");
+	}
+
 	void OnEnable()
 	{
+		time = defaultTime;
 		if(gameObject.tag=="blueNote")
 		{
 			
